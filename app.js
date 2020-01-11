@@ -15,6 +15,26 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.get("/", (req, res) => {
+  res.render("home", { textContent: homeStartingContent });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { textContent: aboutContent });
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact", { textContent: contactContent });
+});
+
+app.get("/compose", (req, res) => {
+  res.render("compose", {});
+});
+
+app.post("/compose", (req, res) => {
+  console.log(req.body.input);
+});
+
 app.listen(3000, function() {
   console.log("Server started on port 3000");
 });
